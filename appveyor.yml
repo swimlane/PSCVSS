@@ -21,6 +21,8 @@ skip_branch_with_pr: true
 init:
   - git config --global core.autocrlf input
 
+clone_folder: c:\projects\PSCVSS
+
 # Ignore testing a commit if only the README.md file changed
 # Or if various strings are found in the commit message: updated readme, update readme, update docs, update version, update appveyor
 skip_commits:
@@ -89,7 +91,7 @@ before_deploy:
   - ps: |
       # Create new markdown and XML help files
       Write-Host "Building new module documentation" -ForegroundColor Yellow
-      Import-Module ".\$env:project_name\$env:project_name.psm1" -Force
+      Import-Module "$env:APPVEYOR_BUILD_FOLDER\PSCVSS\$env:project_name\$env:project_name.psm1" -Force
       New-MarkdownHelp -Module "$env:project_name" -OutputFolder '.\docs\' -Force
       New-ExternalHelp -Path '.\docs\' -OutputPath ".\$env:project_name\en-US\" -Force
       . .\docs.ps1
