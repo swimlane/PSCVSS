@@ -24,18 +24,18 @@ else {
         Write-Output "New Version: $newVersion"
 
         # Update the manifest with the new version value and fix the weird string replace bug
-        $functionList = ((Get-ChildItem -Path .\PSCVSS\Public).BaseName)
+       # $functionList = ((Get-ChildItem -Path .\PSCVSS\Public).BaseName)
+       #'FunctionsToExport' = $functionList
         $splat = @{
             'Path'              = $manifestPath
             'ModuleVersion'     = $newVersion
-            'FunctionsToExport' = $functionList
             'Copyright'         = "(c) 2018-$( (Get-Date).Year ) Swimlane. All rights reserved."
         }
         Update-ModuleManifest @splat
         (Get-Content -Path $manifestPath) -replace 'PSGet_PSCVSS', 'PSCVSS' | Set-Content -Path $manifestPath
         (Get-Content -Path $manifestPath) -replace 'NewManifest', 'PSCVSS' | Set-Content -Path $manifestPath
-        (Get-Content -Path $manifestPath) -replace 'FunctionsToExport = ', 'FunctionsToExport = @(' | Set-Content -Path $manifestPath -Force
-        (Get-Content -Path $manifestPath) -replace "$($functionList[-1])'", "$($functionList[-1])')" | Set-Content -Path $manifestPath -Force
+        #(Get-Content -Path $manifestPath) -replace 'FunctionsToExport = ', 'FunctionsToExport = @(' | Set-Content -Path $manifestPath -Force
+       # (Get-Content -Path $manifestPath) -replace "$($functionList[-1])'", "$($functionList[-1])')" | Set-Content -Path $manifestPath -Force
     }
     catch {
         throw $_
