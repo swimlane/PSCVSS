@@ -91,6 +91,9 @@ before_deploy:
   - ps: |
       # Create new markdown and XML help files
       Write-Host "Building new module documentation" -ForegroundColor Yellow
+      Write-Host "Environmental Path Var is $($env:APPVEYOR_BUILD_FOLDER)" -ForegroundColor Yellow
+      Write-Host "Running Get-ChildItem for debugging" -ForegroundColor Yellow
+      Get-ChildItem -Path . -Recurse -Force
       Import-Module "$env:APPVEYOR_BUILD_FOLDER\PSCVSS\$env:project_name\$env:project_name.psm1" -Force
       New-MarkdownHelp -Module "$env:project_name" -OutputFolder '.\docs\' -Force
       New-ExternalHelp -Path '.\docs\' -OutputPath ".\$env:project_name\en-US\" -Force
