@@ -81,7 +81,7 @@ Task Deploy -Depends Build {
     $lines
 
     $Params = @{
-        Path = $ProjectRoot
+        Path = $env:BHModulePath
         Force = $true
         Recurse = $false # We keep psdeploy artifacts, avoid deploying those : )
     }
