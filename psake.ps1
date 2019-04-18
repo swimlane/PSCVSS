@@ -1,4 +1,4 @@
-# PSake makes variables declared here available in other scriptblocks
+# PSake makes variables declared here available in other scriptblock
 # Init some things
 Properties {
     # Find the build folder based on build system
