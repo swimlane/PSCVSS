@@ -43,7 +43,7 @@ else {
 
     # Create new markdown and XML help files
     Write-Host "Building new function documentation" -ForegroundColor Yellow
-    Import-Module -Name ".\PSCVSS.psm1" -Force
+    Import-Module ".\PSCVSS\PSCVSS.psm1" -Force
     New-MarkdownHelp -Module PSCVSS -OutputFolder '.\docs\' -Force
     New-ExternalHelp -Path '.\docs\' -OutputPath '.\PSCVSS\en-US\' -Force
     . .\docs.ps1
