@@ -14,7 +14,7 @@ else {
     # This means that the major / minor / build values will be consistent across GitHub and the Gallery
     Try {
         # This is where the module manifest lives
-        $manifestPath = '.\PSCVSS\PSCVSS.psd1'
+        $manifestPath = '.\PSCVSS.psd1'
 
         # Start by importing the manifest to determine the version, then add 1 to the revision
         $manifest = Test-ModuleManifest -Path $manifestPath
@@ -43,7 +43,7 @@ else {
 
     # Create new markdown and XML help files
     Write-Host "Building new function documentation" -ForegroundColor Yellow
-    Import-Module -Name ".\PSCVSS\PSCVSS.psm1" -Force
+    Import-Module -Name ".\PSCVSS.psm1" -Force
     New-MarkdownHelp -Module PSCVSS -OutputFolder '.\docs\' -Force
     New-ExternalHelp -Path '.\docs\' -OutputPath '.\PSCVSS\en-US\' -Force
     . .\docs.ps1
