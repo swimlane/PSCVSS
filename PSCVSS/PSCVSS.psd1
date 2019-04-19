@@ -22,7 +22,7 @@
     Copyright         = '(c) 2019 Swimlane. All rights reserved.'
 
     # Description of the functionality provided by this module
-    Description       = 'A Windows PowerShell & PowerShell Core Module to calculate a CVSS3 Score based on a Vector string'
+    Description       = 'A Windows PowerShell & PowerShell Core Module to calculate a Common Vulnerability Scoring System (CVSS) Score based on a Vector string'
 
     # Minimum version of the Windows PowerShell engine required by this module
     PowerShellVersion = '5.1'
@@ -87,7 +87,7 @@
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            Tags       = @('CVSS', 'PowerShell', 'PowerShell Core', 'Vector')
+            Tags       = @('CVSS', 'PowerShell', 'PowerShellCore', 'Vector')
 
             # A URL to the license for this module.
             LicenseUri = 'https://github.com/swimlane/PSCVSS/blob/master/LICENSE.md'
@@ -99,7 +99,7 @@
             # IconUri = ''
 
             # ReleaseNotes of this module
-            # ReleaseNotes = ''
+            ReleaseNotes = 'Ability to calculate a CVSS3 Score based on a provided Vector String'
 
         } # End of PSData hashtable
 
