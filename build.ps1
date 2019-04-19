@@ -23,9 +23,6 @@ else {
         [String]$newVersion = New-Object -TypeName System.Version -ArgumentList ($version.Major, $version.Minor, $version.Build, $env:APPVEYOR_BUILD_NUMBER)
         Write-Output "New Version: $newVersion"
 
-        # Update the manifest with the new version value and fix the weird string replace bug
-       # $functionList = ((Get-ChildItem -Path .\PSCVSS\Public).BaseName)
-       #'FunctionsToExport' = $functionList
         $splat = @{
             'Path'              = $manifestPath
             'ModuleVersion'     = $newVersion
@@ -34,20 +31,10 @@ else {
         Update-ModuleManifest @splat
         (Get-Content -Path $manifestPath) -replace 'PSGet_PSCVSS', 'PSCVSS' | Set-Content -Path $manifestPath
         (Get-Content -Path $manifestPath) -replace 'NewManifest', 'PSCVSS' | Set-Content -Path $manifestPath
-        #(Get-Content -Path $manifestPath) -replace 'FunctionsToExport = ', 'FunctionsToExport = @(' | Set-Content -Path $manifestPath -Force
-       # (Get-Content -Path $manifestPath) -replace "$($functionList[-1])'", "$($functionList[-1])')" | Set-Content -Path $manifestPath -Force
     }
     catch {
         throw $_
     }
-
-    # Create new markdown and XML help files
-   # Write-Host "Building new function documentation" -ForegroundColor Yellow
-   # Import-Module ".\PSCVSS\PSCVSS.psm1" -Force
-   # New-MarkdownHelp -Module PSCVSS -OutputFolder '.\docs\' -Force
-   # New-ExternalHelp -Path '.\docs\' -OutputPath '.\PSCVSS\en-US\' -Force
-   # . .\docs.ps1
-   # Write-Host -Object ''
 
     # Publish the new version to the PowerShell Gallery
     Try {
@@ -70,23 +57,4 @@ else {
         Write-Warning "Publishing update $newVersion to the PowerShell Gallery failed."
         throw $_
     }
-
-    # Publish the new version back to Master on GitHub
-   # Try {
-        # Set up a path to the git.exe cmd, import posh-git to give us control over git, and then push changes to GitHub
-        # Note that "update version" is included in the appveyor.yml file's "skip a build" regex to avoid a loop
-   #     $env:Path += ";$env:ProgramFiles\Git\cmd"
-   #     Import-Module posh-git -ErrorAction Stop
-   #     git checkout master
-   #     git add --all
-   #     git status
-   #     git commit -s -m "Update version to $newVersion"
-   #     git push origin master
-   #     Write-Host "PSCVSS PowerShell Module version $newVersion published to GitHub." -ForegroundColor Cyan
-  #  }
-   # Catch {
-        # Sad panda; it broke
-    #    Write-Warning "Publishing update $newVersion to GitHub failed."
-    #    throw $_
-    #}
 }
