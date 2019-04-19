@@ -14,7 +14,7 @@ else {
     # This means that the major / minor / build values will be consistent across GitHub and the Gallery
     Try {
         # This is where the module manifest lives
-        $manifestPath = '.\PSCVSS.psd1'
+        $manifestPath = '.\PSCVSS\PSCVSS.psd1'
 
         # Start by importing the manifest to determine the version, then add 1 to the revision
         $manifest = Test-ModuleManifest -Path $manifestPath
