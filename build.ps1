@@ -42,12 +42,12 @@ else {
     }
 
     # Create new markdown and XML help files
-    Write-Host "Building new function documentation" -ForegroundColor Yellow
-    Import-Module ".\PSCVSS\PSCVSS.psm1" -Force
-    New-MarkdownHelp -Module PSCVSS -OutputFolder '.\docs\' -Force
-    New-ExternalHelp -Path '.\docs\' -OutputPath '.\PSCVSS\en-US\' -Force
-    . .\docs.ps1
-    Write-Host -Object ''
+   # Write-Host "Building new function documentation" -ForegroundColor Yellow
+   # Import-Module ".\PSCVSS\PSCVSS.psm1" -Force
+   # New-MarkdownHelp -Module PSCVSS -OutputFolder '.\docs\' -Force
+   # New-ExternalHelp -Path '.\docs\' -OutputPath '.\PSCVSS\en-US\' -Force
+   # . .\docs.ps1
+   # Write-Host -Object ''
 
     # Publish the new version to the PowerShell Gallery
     Try {
@@ -72,21 +72,21 @@ else {
     }
 
     # Publish the new version back to Master on GitHub
-    Try {
+   # Try {
         # Set up a path to the git.exe cmd, import posh-git to give us control over git, and then push changes to GitHub
         # Note that "update version" is included in the appveyor.yml file's "skip a build" regex to avoid a loop
-        $env:Path += ";$env:ProgramFiles\Git\cmd"
-        Import-Module posh-git -ErrorAction Stop
-        git checkout master
-        git add --all
-        git status
-        git commit -s -m "Update version to $newVersion"
-        git push origin master
-        Write-Host "PSCVSS PowerShell Module version $newVersion published to GitHub." -ForegroundColor Cyan
-    }
-    Catch {
+   #     $env:Path += ";$env:ProgramFiles\Git\cmd"
+   #     Import-Module posh-git -ErrorAction Stop
+   #     git checkout master
+   #     git add --all
+   #     git status
+   #     git commit -s -m "Update version to $newVersion"
+   #     git push origin master
+   #     Write-Host "PSCVSS PowerShell Module version $newVersion published to GitHub." -ForegroundColor Cyan
+  #  }
+   # Catch {
         # Sad panda; it broke
-        Write-Warning "Publishing update $newVersion to GitHub failed."
-        throw $_
-    }
+    #    Write-Warning "Publishing update $newVersion to GitHub failed."
+    #    throw $_
+    #}
 }
