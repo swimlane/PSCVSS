@@ -5,7 +5,7 @@
 # Disable automatic builds
 # Without this, the following error shows up:
 # "Specify a project or solution file. The directory does not contain a project or solution file."
-build: off
+build: Script
 
 # Version number
 version: 1.0.0.{build}
