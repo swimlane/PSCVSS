@@ -128,10 +128,11 @@ function Add-ObjectDetail
         [boolean]$Passthru = $true
     )
     
-    Write-Verbose -Message 'Adding details to custom object'
 
     Begin
     {
+         Write-Verbose -Message 'Adding details to custom object'
+         
         if($PSBoundParameters.ContainsKey('DefaultProperties'))
         {
             # define a subset of properties

@@ -24,7 +24,6 @@ function Get-CVSSScore {
                    PositionalBinding=$false,
                    HelpUri = 'http://www.microsoft.com/',
                    ConfirmImpact='Medium')]
-    [OutputType([PSCVSS.Vector.Score])]
     Param (
         # A Vector string formatted based on the CVSS standard
         [Parameter(Mandatory=$true,
@@ -38,7 +37,7 @@ function Get-CVSSScore {
     begin{
 
         try{
-            $cvssData = Import-LocalizedData -BaseDirectory . -FileName CVSSS.Data.psd1
+            $cvssData = Get-CVSSData
         }
         catch{
             Write-Error -ErrorRecord $Error[0] -RecommendedAction 'Unable to load localized CVSS Data!'
