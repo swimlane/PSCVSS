@@ -106,8 +106,6 @@ function Register-PowerShellModule {
                 ProjectUri   = $moduleManifest.ProjectUri
                 ReleaseNotes = "Publishing $newVersion of $moduleName"
             }
-            Write-Host @PM
-    
             Publish-Module @PM
         }
         catch{
@@ -115,7 +113,15 @@ function Register-PowerShellModule {
         }
     }
     end{
-
+        Write-Debug -Message 'Updating Markdown based on status'
+        Get-Content 'README.md' | Select -Skip 3 | Set-Content -Path 'README.md'
+        $newMarkdown = Get-Content 'README.md'
+        $output = @()
+        $psUrl = [System.Web.HttpUtility]::UrlEncode("https://img.shields.io/badge/PowerShell-$($newVersion)-brightgreen.svg") 
+        $output += "![]($psUrl)"
+        $psCoreUrl = [System.Web.HttpUtility]::UrlEncode("https://img.shields.io/badge/PowerShell Core-$($newVersion)-brightgreen.svg") 
+        $output += "![]($psCoreUrl)`n"
+        $output += $newMarkdown
+        $output | Set-Content 'README.md'
     }
 }
-    

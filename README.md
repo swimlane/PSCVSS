@@ -1,7 +1,7 @@
-# PSCVSS
+![](https%3a%2f%2fimg.shields.io%2fbadge%2fPowerShell-2.0.2-brightgreen.svg)
+![](https%3a%2f%2fimg.shields.io%2fbadge%2fPowerShell+Core-2.0.2-brightgreen.svg)
 
-[![Build status](https://ci.appveyor.com/api/projects/status/tla2jbf1yqa8qtpu?svg=true)](https://ci.appveyor.com/project/joshswimlane/pscvss)
-[![Build status](https://ci.appveyor.com/api/projects/status/tla2jbf1yqa8qtpu/branch/master?svg=true)](https://ci.appveyor.com/project/joshswimlane/pscvss/branch/master)
+# PSCVSS
 
 A Windows PowerShell & PowerShell Core Module to calculate a CVSS3 Score based on a Vector string
 
