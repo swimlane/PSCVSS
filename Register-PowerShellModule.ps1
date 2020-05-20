@@ -75,7 +75,7 @@ function Register-PowerShellModule {
         if (-not $Patch){
             $Patch = $version.Build
         }
-        [String] $newVersion = New-Object -TypeName System.Version -ArgumentList ($Major, $Minor, $Build)
+        [String] $newVersion = New-Object -TypeName System.Version -ArgumentList ($Major, $Minor, $Patch)
         Write-Debug -Message "New Version is $newVersion"
 
         Write-Debug -Message 'Updating Module Manifest'
