@@ -114,13 +114,11 @@ function Register-PowerShellModule {
     }
     end{
         Write-Debug -Message 'Updating Markdown based on status'
-        Get-Content 'README.md' | Select -Skip 3 | Set-Content -Path 'README.md'
+        Get-Content 'README.md' | Select -Skip 3 | Set-Content 'README.md'
         $newMarkdown = Get-Content 'README.md'
         $output = @()
-        $psUrl = [System.Web.HttpUtility]::UrlEncode("https://img.shields.io/badge/PowerShell-$($newVersion)-brightgreen.svg") 
-        $output += "![]($psUrl)"
-        $psCoreUrl = [System.Web.HttpUtility]::UrlEncode("https://img.shields.io/badge/PowerShell Core-$($newVersion)-brightgreen.svg") 
-        $output += "![]($psCoreUrl)`n"
+        $output += "![](https://img.shields.io/badge/PowerShell-$($newVersion)-brightgreen.svg)"
+        $output += "![](https://img.shields.io/badge/PowerShell%20Core-$($newVersion)-brightgreen.svg)`n"
         $output += $newMarkdown
         $output | Set-Content 'README.md'
     }
