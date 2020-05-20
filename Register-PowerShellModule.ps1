@@ -52,7 +52,7 @@ function Register-PowerShellModule {
         if (-not $manifestPath){
             Write-Error -Message 'Unable to find a valid PowerShell Module (psd1) file in this repository'
         }
-        $moduleName = $manifestPath.split('/')[-1].split('.psd1')[0]
+        $moduleName = (Get-ChildItem -Path $manifestPath).BaseName
     }
     process{
         Write-Debug -Message 'Testing ModuleManifest and getting current version'
