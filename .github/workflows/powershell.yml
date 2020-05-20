@@ -7,37 +7,34 @@ on:
 
 jobs:
   powershell:
-    build:
-      runs-on: windows-latest
-      steps:
-      - uses: actions/checkout@v2
-      - name: Running Tests
-        run: |
-          Install-Module -Name Pester -Force  
-          .\Tests\PSCVSS.Tests.ps1
-        shell: powershell
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Running Tests
+      run: |
+        Install-Module -Name Pester -Force  
+        .\Tests\PSCVSS.Tests.ps1
+      shell: powershell
   powershell_core:
-    build:
-      runs-on: ${{ matrix.os }}
-      needs: powershell
-      strategy:
-          matrix:
-              os: [windows-latest, ubuntu-latest, macos-latest]
-      steps:
-      - uses: actions/checkout@v2
-      - name: Running Tests
-        run: |
-          Install-Module -Name Pester -Force
-          ./Tests/PSCVSS.Tests.ps1
-        shell: pwsh
+    runs-on: ${{ matrix.os }}
+    needs: powershell
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Running Tests
+      run: |
+        Install-Module -Name Pester -Force
+        ./Tests/PSCVSS.Tests.ps1
+      shell: pwsh
   powershell_gallery:
-    build:
-      runs-on: windows-latest
-      needs: powershell_core
-      steps:
-        - uses: actions/checkout@v2
-        - name: Uploading to PowerShell Gallery
-          run: |
-            . .\Register-PowerShellModule
-            Register-PowerShellModule -Key ${{ secrets.PSGALLERY }}
-          shell: powershell
+    runs-on: windows-latest
+    needs: powershell_core
+    steps:
+      - uses: actions/checkout@v2
+      - name: Uploading to PowerShell Gallery
+        run: |
+          . .\Register-PowerShellModule
+          Register-PowerShellModule -Key ${{ secrets.PSGALLERY }}
+        shell: powershell
