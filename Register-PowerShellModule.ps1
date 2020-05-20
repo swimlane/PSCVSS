@@ -90,6 +90,7 @@ function Register-PowerShellModule {
             (Get-Content -Path $manifestPath) -replace 'NewManifest', '$($moduleName)' | Set-Content -Path $manifestPath
         }
         catch{
+            Write-Host $moduleName
             Write-Error -ErrorRecord $Error[0] -ErrorAction Stop
 
         }
