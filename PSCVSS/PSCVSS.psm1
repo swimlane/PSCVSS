@@ -1,6 +1,6 @@
-using module "./PSCVSS/Class/BaseScore.psm1"
-using module "./PSCVSS/Class/EnvironmentalScore.psm1"
-using module "./PSCVSS/Class/TemporalScore.psm1"
+using module ".\Class\BaseScore.psm1"
+using module ".\Class\EnvironmentalScore.psm1"
+using module ".\Class\TemporalScore.psm1"
 
 #Get public and private function definition files.
 $Public  = @( Get-ChildItem -Path $PSScriptRoot\Public\*.ps1 -Recurse -ErrorAction SilentlyContinue )
