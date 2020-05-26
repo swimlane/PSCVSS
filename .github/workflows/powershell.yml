@@ -36,5 +36,5 @@ jobs:
       - name: Uploading to PowerShell Gallery
         run: |
           . .\Register-PowerShellModule
-          Register-PowerShellModule -Key ${{ secrets.PSGALLERY }} -Patch 3
+          Register-PowerShellModule -Key ${{ secrets.PSGALLERY }}
         shell: powershell
