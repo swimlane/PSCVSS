@@ -12,7 +12,7 @@
 RootModule = 'PSCVSS.psm1'
 
 # Version number of this module.
-ModuleVersion = '2.0.2'
+ModuleVersion = '2.0.4'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Desktop', 'Core'
@@ -57,7 +57,7 @@ PowerShellVersion = '5.1'
 # RequiredAssemblies = @()
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = 'Class/PSCVSS.Classes.ps1'
+ScriptsToProcess = 'Class\PSCVSS.Classes.ps1'
 
 # Type files (.ps1xml) to be loaded when importing this module
 # TypesToProcess = @()
