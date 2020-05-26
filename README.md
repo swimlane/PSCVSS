@@ -1,5 +1,5 @@
-![](https://img.shields.io/badge/PowerShell-2.0.2-brightgreen.svg)
-![](https://img.shields.io/badge/PowerShell%20Core-2.0.2-brightgreen.svg)
+![](https://img.shields.io/badge/PowerShell-2.0.4-brightgreen.svg)
+![](https://img.shields.io/badge/PowerShell%20Core-2.0.4-brightgreen.svg)
 
 # PSCVSS
 

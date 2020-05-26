@@ -113,13 +113,13 @@ function Register-PowerShellModule {
         }
     }
     end{
-        Write-Debug -Message 'Updating Markdown based on status'
-        Get-Content 'README.md' | Select -Skip 3 | Set-Content 'README.md'
-        $newMarkdown = Get-Content 'README.md'
-        $output = @()
-        $output += "![](https://img.shields.io/badge/PowerShell-$($newVersion)-brightgreen.svg)"
-        $output += "![](https://img.shields.io/badge/PowerShell%20Core-$($newVersion)-brightgreen.svg)`n"
-        $output += $newMarkdown
-        $output | Set-Content 'README.md'
+       # Write-Debug -Message 'Updating Markdown based on status'
+       # Get-Content 'README.md' | Select -Skip 3 | Set-Content 'README.md'
+       # $newMarkdown = Get-Content 'README.md'
+       #$output = @()
+       # $output += "![](https://img.shields.io/badge/PowerShell-$($newVersion)-brightgreen.svg)"
+       # $output += "![](https://img.shields.io/badge/PowerShell%20Core-$($newVersion)-brightgreen.svg)`n"
+       # $output += $newMarkdown
+       # $output | Set-Content 'README.md'
     }
 }
