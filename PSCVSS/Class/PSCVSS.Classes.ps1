@@ -105,7 +105,7 @@ class EnvironmentalScore {
 
     [String] getFormattedValue($value){
         $intNumber = ($value).ToString().Split('.')[0]
-        $decNumber = ($value).ToString().Split('.')[1][0]
+        $decNumber = ($value).ToString('n1').Split('.')[1][0]
         return "$intNumber.$decNumber"
     }
 
